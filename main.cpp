@@ -1,25 +1,20 @@
-#include "Stack.h"
+#include "Ball.h"
 #include <iostream>
+#include <cstdint>
 
 int main(int argc, char* argv[])
 {
-	Stack stack;
-	stack.reset();
+	Ball def;
+	def.print();
  
-	stack.print();
- 
-	stack.push(5);
-	stack.push(3);
-	stack.push(8);
-	stack.print();
- 
-	stack.pop();
-	stack.print();
- 
-	stack.pop();
-	stack.pop();
- 
-	stack.print();
+	Ball blue{ "blue" };
+	blue.print();
+	
+	Ball twenty{ 20.0 };
+	twenty.print();
+	
+	Ball blueTwenty{ "blue", 20.0 };
+	blueTwenty.print();
 
     return 0;
 }
