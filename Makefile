@@ -3,7 +3,7 @@ CXXFLAGS = -std=c++11 -Wall -g
 INCLUDES = 
 #-I./includes
 #LFLAGS = -L../includes
-SRCS = main.cpp Ball.cpp
+SRCS = monsters.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 EXEC = lesson
