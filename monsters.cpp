@@ -22,10 +22,10 @@ public:
  
 private:
  
-	Type m_type;
-	std::string m_name;
-	std::string m_roar;
-	int m_hitPoints;
+	Type m_type{};
+	std::string m_name{};
+	std::string m_roar{};
+	int m_hitPoints{};
  
 public:
 	Monster(Type type, const std::string& name, const std::string& roar, int hitPoints)
@@ -71,19 +71,19 @@ public:
  
 	static Monster generateMonster()
 	{
-		auto type{ static_cast<Monster::Monster::Type>(getRandomNumber(0, Monster::MAX_MONSTER_TYPES - 1)) };
+		Monster::Type type{static_cast<Monster::Type>(getRandomNumber(0, Monster::MAX_MONSTER_TYPES - 1)) };
 		int hitPoints{ getRandomNumber(1, 100) };
  
 		// If your compile is not C++17 capable, use std::array<std::string_view, 6> instead.
-		static std::array<std::string, 6> s_names{ "Blarg", "Moog", "Pksh", "Tyrn", "Mort", "Hans" };
-		static std::array<std::string, 6> s_roars{ "*ROAR*", "*peep*", "*squeal*", "*whine*", "*hum*", "*burp*"};
+		static constexpr std::array<const char*, 6> s_names{ "Blarg", "Moog", "Pksh", "Tyrn", "Mort", "Hans" };
+		static constexpr std::array<const char*, 6> s_roars{ "*ROAR*", "*peep*", "*squeal*", "*whine*", "*hum*", "*burp*"};
  
 		// Without the cast, compilers with a high warning level complain about
 		// an implicit cast from a signed to an unsigned integer.
-		auto name{ s_names[static_cast<std::size_t>(getRandomNumber(0, s_names.size()-1))] };
-		auto roar{ s_roars[static_cast<std::size_t>(getRandomNumber(0, s_roars.size()-1))] };
+		std::string name{ s_names[static_cast<std::size_t>(getRandomNumber(0, s_names.size()-1))] };
+		std::string roar{ s_roars[static_cast<std::size_t>(getRandomNumber(0, s_roars.size()-1))] };
  
-		return Monster(type, name, roar, hitPoints);
+		return {type, name, roar, hitPoints};
 	}
 };
  
