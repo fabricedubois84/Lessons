@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -std=c++11 -Wall -g
+CXXFLAGS = -std=c++17 -Wall -g
 INCLUDES = 
 #-I./includes
 #LFLAGS = -L../includes
