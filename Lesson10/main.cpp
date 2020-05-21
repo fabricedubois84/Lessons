@@ -3,22 +3,17 @@
 
 int main (int argc, char *argv[])
 {
-    IntArray array{10};
+    IntArray array { 5, 4, 3, 2, 1 };
 
-    for (int i{0}; i < 10; ++i)
-        array[i] = i + 1;
+    for ( int count{0}; count < array.getLength(); ++count )
+        std::cout << array[count] << ' ';
 
-    array.resize(8);
+    std::cout << '\n';
 
-    array.insertBefore(20, 5);
+    array = { 1, 3, 5, 7, 9, 11 };
 
-    array.remove(3);
-
-    array.insertAtEnd(30);
-    array.insertAtBeginning(40);
-
-    for (int i{0}; i < array.getLength(); ++i)
-        std::cout << array[i] << ' ';
+    for ( int count{0}; count < array.getLength(); ++count )
+        std::cout << array[count] << ' ';
 
     std::cout << '\n';
 

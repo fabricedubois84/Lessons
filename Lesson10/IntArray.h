@@ -2,6 +2,7 @@
 #define INTARRAY_H
 
 #include <cassert>
+#include <initializer_list>
 
 class IntArray
 {
@@ -20,6 +21,20 @@ public:
         if (length > 0)
             m_data = new int[length]{};
     }
+
+    IntArray(std::initializer_list<int> list): IntArray(static_cast<int>(list.size()))
+    {
+        int count{0};
+
+        for (auto element : list)
+        {
+            m_data[count] = element;
+            ++count;
+        }
+
+    }
+
+    IntArray(const IntArray&) = delete;
 
 // destructor
     ~IntArray()
@@ -54,6 +69,9 @@ public:
 
 
 // operators
+    IntArray& operator=(const IntArray& list) = delete;
+    IntArray& operator=(std::initializer_list<int> list);
+
     int& operator[](int index);
 
 };

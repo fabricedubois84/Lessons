@@ -94,6 +94,28 @@ void IntArray::insertAtEnd(int value)
 }
 
 // operators
+IntArray& IntArray::operator=(std::initializer_list<int> list)
+{
+    int length{ static_cast<int>(list.size()) };
+
+    if ( length != m_length )
+    {
+        delete[] m_data;
+        m_length = length;
+        m_data = new int[length]{};
+    }
+
+    int count{0};
+
+    for ( auto element : list )
+    {
+        m_data[count] = element;
+        ++count;
+    }
+
+    return *this;
+}
+
 int& IntArray::operator[](int index)
 {
     assert(index >= 0 && index < m_length);
